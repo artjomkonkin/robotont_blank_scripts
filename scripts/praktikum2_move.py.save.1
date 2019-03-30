@@ -19,44 +19,6 @@ def closing():
     # Force the robot to stop
     velocity_publisher.publish(vel_msg)
 
-#######################
-# YOUR FUNCTIONS HERE #
-#######################
-def otseminek(kiirus,kestus):
-   for i in range (0,kestus):
-      vel_msg.linear.x = kiirus
-      vel_msg.linear.y = 0
-      vel_msg.angular.z = 0
-      velocity_publisher.publish(vel_msg)
-      rospy.sleep(0.1)
-
-def dance(nurk,kestus):
-   for i in range (0,kestus):
-      vel_msg.linear.x = 0
-      vel_msg.linear.y = 0
-      vel_msg.angular.z = nurk
-      velocity_publisher.publish(vel_msg)
-      rospy.sleep(0.1)
-
-def ruut(kiirus,nurk,kestus,kestus2):
-   for i in range(0,kestus):
-        vel_msg.linear.x = kiirus
-        vel_msg.linear.y = 0
-        vel_msg.angular.z = 0
-        velocity_publisher.publish(vel_msg)
-        rospy.sleep(0.1)
-   for i in range(0,kestus2):
-        vel_msg.linear.x = 0
-        vel_msg.linear.y = 0
-        vel_msg.angular.z = nurk
-        velocity_publisher.publish(vel_msg)
-        rospy.sleep(0.1)
-
-
-###########################
-# YOUR FUNCTIONS HERE END #
-###########################
-
 
 def move():
     # Starts a new node
@@ -70,19 +32,12 @@ def move():
     vel_msg.angular.z = 0
 
     while not rospy.is_shutdown():
+
         ########################
         # YOUR CODE HERE START #
         ########################
-        otseminek(0.2,60)
-
-        dance(3,30)
-
-        ruut(0.2,1,30,18)
-        ruut(0.2,1,30,18)
-        ruut(0.2,1,30,18)
-        ruut(0.2,1,30,18)
-
-        vel_msg.linear.x = 0
+        for i in range (020)
+        vel_msg.linear.x= 0.2
         vel_msg.linear.y = 0
         vel_msg.angular.z = 0
         velocity_publisher.publish(vel_msg)
