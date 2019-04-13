@@ -95,6 +95,38 @@ def ar_demo():
         rospy.loginfo("RPY: %s %s %s", roll, pitch, yaw)
         # YOUR CODE HERE
 
+        if marker.id == 5:
+           
+            for i in range (0,4):
+                for i in range(0,70):
+                    twist_msg.linear.x = 0.2
+                    twist_msg.linear.y = 0
+                    twist_msg.angular.z = 0
+                    cmd_vel_pub.publish(twist_msg)
+                    rospy.sleep(0.05)
+
+                for i in range(0,60):
+                     twist_msg.linear.x = 0
+                     twist_msg.linear.y = 0
+                     twist_msg.angular.z = 1
+                     cmd_vel_pub.publish(twist_msg)
+                     rospy.sleep(0.05)
+
+        if marker.id == 1:
+            if x > 0.5:
+                twist_msg.linear.x = 0.2
+                twist_msg.linear.y = 0
+                twist_msg.angular.z = 0
+                cmd_vel_pub.publish(twist_msg)
+                rospy.sleep(0.05)
+
+            else:
+                twist_msg.linear.x = -0.2
+                twist_msg.linear.y = 0
+                twist_msg.angular.z = 0
+                cmd_vel_pub.publish(twist_msg)
+                rospy.sleep(0.05)
+
         # YOUR CODE HERE END
         # limiting
         twist_msg.linear.x = min(twist_msg.linear.x, MAX_X_SPEED) if twist_msg.linear.x > 0 else max(
