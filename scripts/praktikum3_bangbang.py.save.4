@@ -57,14 +57,14 @@ def move():
            velocity_publisher.publish(vel_msg)
            time.sleep(0.1)
 
-        elif distances.centerMin > 0.5 <= 0.6:
+        elif distances.centerMin > 0.55 <= 0.6:
            vel_msg.linear.x = 0
            vel_msg.linear.y = 0
            vel_msg.angular.z = 0
            velocity_publisher.publish(vel_msg)
            time.sleep(0.1)
 
-        else:
+            else:
            vel_msg.linear.x = -0.1
            vel_msg.linear.y = 0
            vel_msg.angular.z = 0
@@ -80,15 +80,16 @@ def move():
         ######################
         # P-KONTROLLER START #
         ######################
-
-     constant = 1
-     main_distance = 0.6
-     lenght = distances.centerMin - main_distance
+     constant = 0.5
+     lenght = distances.centerMin - 0.6
      speed = constant * lenght
 
-     vel_msg.linear.x = speed
-     velocity_publisher.publish(vel_msg)
-     time.sleep(0.1)
+    if distances.centerMin > 0.6:
+
+
+
+
+
 
         ####################
         # P-KONTROLLER END #

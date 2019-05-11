@@ -23,7 +23,6 @@ constant = 1
 def keep_distance(x, y, z, roll, pitch, yaw, twist):
 
 #See on kood praktikumist 4
-
 #    if x > 0.5:
 #       twist.linear.x = 0.2
 
@@ -34,16 +33,16 @@ def keep_distance(x, y, z, roll, pitch, yaw, twist):
 
 #See on kood praktikumist 7
 
-    lenght = x - 0.5
+    main_distance = 0.5
+    lenght = x - main_distance
+    speed = constant * lenght
 
-    twist.linear.x = constant * lenght
+    twist.linear.x = speed
     return twist
 
 # TASK 2
 
 def keep_center(x, y, z, roll, pitch, yaw, twist):
-
-#See on kood praktikumist 4
 
 #    if y < 0:
 #       twist.linear.y = -0.2
@@ -51,16 +50,15 @@ def keep_center(x, y, z, roll, pitch, yaw, twist):
 #    else:
 #       twist.linear.y = 0.2
 
-#See on kood praktikumist 7
-    y_constant = 2
-    twist.linear.y = y_constant * y 
+      
     return twist
+
+
 
 # TASK 3
 
-def turn_towards_ar(x, y, z, roll, pitch, yaw, twist):
 
-#See on kood praktikumist 4
+def turn_towards_ar(x, y, z, roll, pitch, yaw, twist):
 
 #   if yaw > -1.5:
 #       twist.angular.z = 0.5
@@ -68,10 +66,6 @@ def turn_towards_ar(x, y, z, roll, pitch, yaw, twist):
 #    else:
 #       twist.angular.z = -0.5
 
-#See on kood praktimust 7
-
-    turn = yaw + 1.5
-    twist.angular.z = constant * turn
     return twist
 
 

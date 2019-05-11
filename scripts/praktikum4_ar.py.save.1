@@ -13,66 +13,47 @@ MAX_X_SPEED = 0.5
 MAX_Y_SPEED = 0.5
 MAX_Z_SPEED = 2
 
-constant = 1
 
 # IMPLEMENT THESE FUNCTIONS
 
 # TASK 1
 
 
-def keep_distance(x, y, z, roll, pitch, yaw, twist):
+"""def keep_distance(x, y, z, roll, pitch, yaw, twist):
+ 
+    if x > 0.5:
+       twist.linear.x = 0.2
 
-#See on kood praktikumist 4
+    else:
+       twist.linear.x = -0.2
 
-#    if x > 0.5:
-#       twist.linear.x = 0.2
-
-#    else:
-#       twist.linear.x = -0.2
-
-#    return twist
-
-#See on kood praktikumist 7
-
-    lenght = x - 0.5
-
-    twist.linear.x = constant * lenght
-    return twist
+    return twist"""
 
 # TASK 2
 
-def keep_center(x, y, z, roll, pitch, yaw, twist):
 
-#See on kood praktikumist 4
+"""def keep_center(x, y, z, roll, pitch, yaw, twist):
+    
+    if y < 0:
+       twist.linear.y = -0.2
 
-#    if y < 0:
-#       twist.linear.y = -0.2
+    else:
+       twist.linear.y = 0.2
 
-#    else:
-#       twist.linear.y = 0.2
-
-#See on kood praktikumist 7
-    y_constant = 2
-    twist.linear.y = y_constant * y 
-    return twist
+    return twist"""
 
 # TASK 3
 
-def turn_towards_ar(x, y, z, roll, pitch, yaw, twist):
 
-#See on kood praktikumist 4
+"""def turn_towards_ar(x, y, z, roll, pitch, yaw, twist):
+    
+    if yaw > -1.5:
+       twist.angular.z = 0.5
 
-#   if yaw > -1.5:
-#       twist.angular.z = 0.5
+    else:
+       twist.angular.z = -0.5
 
-#    else:
-#       twist.angular.z = -0.5
-
-#See on kood praktimust 7
-
-    turn = yaw + 1.5
-    twist.angular.z = constant * turn
-    return twist
+    return twist"""
 
 
 def callback(data):
@@ -124,7 +105,7 @@ def callback(data):
 
 def timer_callback(event):
     global last_heartbeat
-    if (rospy.get_time() - last_heartbeat) >= 0.3:
+    if (rospy.get_time() - last_heartbeat) >= 0.1:
         cmd_vel_pub.publish(Twist())
 
 
